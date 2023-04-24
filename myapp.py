@@ -30,15 +30,22 @@ def get_data(id=None):
 def post_data():
     data = {
         # for object level validation
-        'name': 'Rohit',
-        'roll': 120,
-        'city': 'Alhabad', # ➡ data : {'non_field_errors': ['City must be Ranchi']}
+        # 'name': 'Kohit',
+        # 'roll': 120,
+        # 'city': 'Alhabad', # ➡ data : {'non_field_errors': ['City must be Ranchi']}
         # 'city': 'Ranchi' # ➡ data : {'msg': 'Data Created'}
 
         # for field level validation
         # 'name': 'Rohit',
         # 'roll': 201, 
         # 'city': 'Ranchi' # ➡ data : {'roll': ['Seat Full']}
+
+        # Validators
+        'name': 'Kohit', # ➡ data : {'name': ['Name should start with R']}
+        'roll': 120,
+        'city': 'Alhabad',
+
+
     }
     json_data = json.dumps(data)
     r = requests.post(url = URL, data = json_data)
