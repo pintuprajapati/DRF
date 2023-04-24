@@ -33,3 +33,12 @@ class StudentSerializer(serializers.Serializer):
         if value >= 200:
             raise serializers.ValidationError('Seat Full') # if roll >= 200, then raise an error and show the msg 'sear full'
         return value
+
+    # Object Level Validation
+    def validate(self, data):
+        nm = data.get('name')
+        ct = data.get('city')
+        if nm.lower() == 'rohit' and ct.lower() != 'ranchi':
+            raise serializers.ValidationError('City must be Ranchi')
+        return data
+            
