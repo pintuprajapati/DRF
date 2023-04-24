@@ -30,7 +30,7 @@ class StudentAPI(View):
                 stu = Student.objects.get(id=id)
                 serializer = StudentSerializer(stu) # converting pythond data to complex data
                 json_data = JSONRenderer().render(serializer.data)
-                return HttpResponse(json_data, content_type = 'application/json')
+                return HttpResponse(json_data, content_type = 'application/json') # send back the response to the FE
             except Student.DoesNotExist:
                 error_msg = 'Id does not exist'
                 raise Exception(error_msg)

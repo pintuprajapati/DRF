@@ -28,3 +28,8 @@ class StudentSerializer(serializers.Serializer):
         instance.save()
         return instance
     
+    # Field Level Validation
+    def validate_roll(self, value):
+        if value >= 200:
+            raise serializers.ValidationError('Seat Full') # if roll >= 200, then raise an error and show the msg 'sear full'
+        return value
