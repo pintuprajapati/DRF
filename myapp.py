@@ -30,7 +30,7 @@ def get_data(id=None):
 def post_data():
     data = {
         # for object level validation
-        # 'name': 'Kohit',
+        # 'name': 'Rohit',
         # 'roll': 120,
         # 'city': 'Alhabad', # ➡ data : {'non_field_errors': ['City must be Ranchi']}
         # 'city': 'Ranchi' # ➡ data : {'msg': 'Data Created'}
