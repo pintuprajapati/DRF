@@ -1,30 +1,19 @@
 from rest_framework import serializers
 from .models import Student
 
-class StudentSerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=100)
-    roll = serializers.IntegerField()
-    city = serializers.CharField(max_length=100)
+# Serializer using "ModelSerializer"
+class StudentSerializer(serializers.ModelSerializer):
+    # name = serializers.CharField(read_only = True) # Explicitly mention the condition for specific single field
+    class Meta:
+        model = Student # create a ModelSerializer for "Student" model
+        fields = ['id', 'name', 'roll', 'city']
 
-    # to create data using POST
-    def create(self, validated_data):
-        return Student.objects.create(**validated_data)
+        read_only_fields = ['name', 'roll'] # Explicitely mention the condition for multiple field
 
-    # to update the data
-    def update(self, instance, validated_data):
-        """
-        Params: 
-            validation_data - New data from user for updation
-            instance - Old data stored in database
-        Return:
-            It will return the instance with "updated value or old value"
-
-        Ex: If the new data is available for 'name' then it will be 'get()' and updated in database.
-        If new data for 'name' is not available then old instance of 'name' will remain the same. It won't change.
-        """
-        instance.name = validated_data.get('name', instance.name)
-        instance.roll = validated_data.get('roll', instance.roll)
-        instance.city = validated_data.get('city', instance.city)
-        instance.save()
-        return instance
+        # extra_kwargs = {
+        #     'name': {'read_only': True},
+        # }
     
+        # if you want all the fields from model or exclude some fields
+        # fields = '__all__'
+        # exclude = ['roll']

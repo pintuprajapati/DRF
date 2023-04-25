@@ -24,12 +24,12 @@ def get_data(id=None):
     data = r.json()
     print("➡ data :", data)
 
-get_data(5) # to test "GET" api, uncomment this one
+# get_data(2) # to test "GET" api, uncomment this one
 
 ################## POST ##################
 def post_data():
     data = {
-        'name': 'Sonam',
+        'name': 'Manoj',
         'roll': 101,
         'city': 'Ranchi'
     }
@@ -43,21 +43,22 @@ def post_data():
 ################## UPDATE ##################
 def update_data():
     data = {
-        'id': 9,
-        'name': 'Rohit1',
-        'city': 'Dhanbad'
+        'id': 17,
+        'name': 'Manoj1',
+        'roll': 121,
+        'city': 'Gurugram'
     }
     json_data = json.dumps(data)
     r = requests.put(url = URL, data = json_data)
     data = r.json()
     print("➡ data :", data)
 
-# update_data() # to test "UPDATE" api, uncomment this one
+update_data() # to test "UPDATE" api, uncomment this one
 
 ################## DELETE ##################
 def delete_data():
     data = {
-        'id': 11,
+        'id': 18,
     }
     json_data = json.dumps(data)
     r = requests.delete(url = URL, data = json_data)
