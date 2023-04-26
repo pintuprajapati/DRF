@@ -27,7 +27,7 @@ def get_data(id=None):
     data = r.json()
     print("➡ data :", data)
 
-# get_data() # to test "GET" api, uncomment this one
+get_data() # to test "GET" api, uncomment this one
 
 ################## POST ##################
 def post_data():
@@ -41,7 +41,7 @@ def post_data():
     data = r.json()
     print("➡ data :", data)
 
-post_data() # to test "POST" api, uncomment this one
+# post_data() # to test "POST" api, uncomment this one
 
 ################## UPDATE ##################
 def update_data():
