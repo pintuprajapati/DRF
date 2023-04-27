@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import LCStudentAPI, RUDStudentAPI
+from api import views
 
 urlpatterns = [
-    path('studentapi/', LCStudentAPI.as_view()),
-    path('studentapi/<int:pk>/', RUDStudentAPI.as_view()), # for browsable API testing - we have to mention pk in urls.py
+    path('studentapi/', views.StudentListCreate.as_view()),
+    path('studentapi/<int:pk>/', views.StudentRetrieveUpdateDestroy.as_view()), # for browsable API testing - we have to mention pk in urls.py
 ]
