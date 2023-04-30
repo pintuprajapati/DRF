@@ -13,7 +13,8 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 # Register class with Router
-router.register('studentapi', views.StudentViewSet, basename='student')
+router.register('studentapi', views.StudentModelViewSet, basename='student')
+router.register('studentapi-readonly', views.StudentReadOnlyModelViewSet, basename='readonly')
 
 urlpatterns = [
     path('', include(router.urls)),
