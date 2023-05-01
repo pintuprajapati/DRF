@@ -18,4 +18,5 @@ router.register('studentapi-readonly', views.StudentReadOnlyModelViewSet, basena
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('auth/', include('rest_framework.urls')), # To enable Login, Logout option in Browsable API
 ]
