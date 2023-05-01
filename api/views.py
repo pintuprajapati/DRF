@@ -23,8 +23,8 @@ class StudentModelViewSet(viewsets.ModelViewSet):
 
     # Authentication and Permission
     # IsAuthenticated - Whether user is admin or not, doesn't matter. If user is registered then user can access the API
-    authentication_classes = [BasicAuthentication] # adding BasicAuthentication to this API
-    permission_classes = [IsAuthenticated] # only authenticated users are allowed to access this API (User ID and Password needed)
+    # authentication_classes = [BasicAuthentication] # adding BasicAuthentication to this API
+    # permission_classes = [IsAuthenticated] # only authenticated users are allowed to access this API (User ID and Password needed)
 
 class StudentReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
     """
