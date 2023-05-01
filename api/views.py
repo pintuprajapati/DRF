@@ -4,7 +4,7 @@ from .models import Student
 from .serializers import StudentSerializer
 from rest_framework import status, viewsets
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 
 
 class StudentModelViewSet(viewsets.ModelViewSet):
@@ -23,8 +23,9 @@ class StudentModelViewSet(viewsets.ModelViewSet):
 
     # Authentication and Permission
     # IsAuthenticated - Whether user is admin or not, doesn't matter. If user is registered then user can access the API
-    # authentication_classes = [BasicAuthentication] # adding BasicAuthentication to this API
+    authentication_classes = [BasicAuthentication] # adding BasicAuthentication to this API
     # permission_classes = [IsAuthenticated] # only authenticated users are allowed to access this API (User ID and Password needed)
+    permission_classes = [IsAdminUser] # only admins are allowed to access this API (User ID and Password needed)
 
 class StudentReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -38,4 +39,4 @@ class StudentReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
 
     # Overwriting Global Default BasicAuthentication and Permission Class (from settings.py)
     authentication_classes = [BasicAuthentication] # adding BasicAuthentication to this API
-    permission_classes = [AllowAny] # Anyone can access this API (registered or not, Id and password not needed)
+    permission_classes = [AllowAny] # Anyone can access this API (IsStaff should be True)
