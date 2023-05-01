@@ -4,7 +4,7 @@ from .models import Student
 from .serializers import StudentSerializer
 from rest_framework import status, viewsets
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class StudentModelViewSet(viewsets.ModelViewSet):
@@ -35,4 +35,7 @@ class StudentReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    
+
+    # Overwriting Global Default BasicAuthentication and Permission Class (from settings.py)
+    authentication_classes = [BasicAuthentication] # adding BasicAuthentication to this API
+    permission_classes = [AllowAny] # Anyone can access this API (registered or not, Id and password not needed)
