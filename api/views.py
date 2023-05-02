@@ -4,12 +4,23 @@ from rest_framework.response import Response
 from .models import Student
 from .serializers import StudentSerializer
 from rest_framework import status
-from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
 
+# for authentication and permissoins
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser, IsAuthenticatedOrReadOnly
+from rest_framework.decorators import api_view, authentication_classes, permission_classes 
+
+# Create your views here.
 @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+
+# @authentication_classes([SessionAuthentication])
+# @permission_classes([AllowAny])
+# @permission_classes([IsAdminUser])
+# @permission_classes([IsAuthenticatedOrReadOnly])
+
 @authentication_classes([BasicAuthentication])
 @permission_classes([IsAuthenticated])
+
 # def student_api(request, pk=None): # For browsable API testing, you can uncomment this and test it
 def student_api(request):
     if request.method == 'GET':
