@@ -38,10 +38,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'rest_framework.authtoken', # To Generate and Validate the Token
 
     # Apps
     'api',
 ]
+"""
+authtoken requires to update the database after adding it into settings.py
+After adding 'rest_framework.authtoken' - run below command
+command: python manage.py migrate
+All the Tokens are stored in Token Database - That's why we have to migrate once
+"""
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
