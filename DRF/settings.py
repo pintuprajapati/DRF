@@ -132,3 +132,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.BasicAuthentication'],
 #     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated']
 # }
+
+######################### JWT Authentication #########################
+
+from datetime import timedelta
+
+# Set the access token lifetime to 30 minutes
+ACCESS_TOKEN_LIFETIME = timedelta(minutes=30)
+
+# Use the access token lifetime in Simple JWT's configuration
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': ACCESS_TOKEN_LIFETIME,
+}
